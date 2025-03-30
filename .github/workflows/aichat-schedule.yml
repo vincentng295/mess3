@@ -60,7 +60,7 @@ jobs:
       - name: Checkout HuskyDG Automatic FB
         uses: actions/checkout@v3
         with:
-          repository: HuskyDG/automatic_fb
+          repository: HuskyDG/gemini_fbchat_bot
           ref: main # Optional: main or tags name
 
       # Set up Python
