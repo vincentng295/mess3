@@ -71,7 +71,7 @@ jobs:
 
       - name: Test selenium
         run: |
-          python3 test_selenium.py
+          sudo python3 test_selenium.py
         env:
           PYTHONUNBUFFERED: "1"
 
@@ -88,7 +88,7 @@ jobs:
 
       - name: Login Facebook account
         run: |
-          python3 fb_getcookies_test.py
+          sudo python3 fb_getcookies_test.py
         env:
           PYTHONUNBUFFERED: "1"
 
@@ -105,7 +105,7 @@ jobs:
       - name: Run AI Chat on Messenger account
         if: ${{ github.event_name == 'schedule' || inputs.check_only != true }}
         run: |
-          python3 aichat_linux_timeout.py
+          sudo python3 aichat_linux_timeout.py
         env:
           PYTHONUNBUFFERED: "1"
           GENKEY: ${{ secrets.GENKEY }}
