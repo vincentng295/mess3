@@ -71,6 +71,8 @@ jobs:
 
       - name: Test selenium
         run: |
+          mkdir -p "$SCPDIR/Default"
+          touch "$SCPDIR/Default/Preferences"
           sudo chmod -R 777 "${{ github.workspace }}"
           sudo chown -R $USER:$USER "${{ github.workspace }}"
           python3 test_selenium.py
