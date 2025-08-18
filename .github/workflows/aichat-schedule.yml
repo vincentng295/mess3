@@ -1,4 +1,4 @@
-name: Run AI Chat on Messenger Account
+name: Run AI Chat 001
 
 on:
   workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
   run-aichat:
     runs-on: ubuntu-latest   # 🔥 đổi sang Linux runner
     env:
-      SCPDIR: /tmp/chrome_tmp_1232929
+      SCPDIR: ${{ github.workspace }}/scoped_dir
       COOKIESFILE: ${{ github.workspace }}/cookies.json
       FBINFOSFILE: ${{ github.workspace }}/facebook_infos.bin
       SELF_FBINFOFILE: ${{ github.workspace }}/self_facebook_info.bin
@@ -71,10 +71,6 @@ jobs:
 
       - name: Test selenium
         run: |
-          mkdir -p "$SCPDIR"
-          sudo mount -t tmpfs tmpfs -o mode=777 "$SCPDIR"
-          mkdir -p "$SCPDIR/Default"
-          echo '{}' > "$SCPDIR/Default/Preferences"
           python3 test_selenium.py
         env:
           PYTHONUNBUFFERED: "1"
