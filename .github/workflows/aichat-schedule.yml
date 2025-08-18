@@ -73,6 +73,8 @@ jobs:
         run: |
           mkdir -p "$SCPDIR"
           sudo mount -t tmpfs tmpfs -o mode=777 "$SCPDIR"
+          mkdir -p "$SCPDIR/Default"
+          echo '{}' > "$SCPDIR/Default/Preferences"
           python3 test_selenium.py
         env:
           PYTHONUNBUFFERED: "1"
