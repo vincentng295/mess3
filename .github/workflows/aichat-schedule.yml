@@ -40,7 +40,7 @@ jobs:
   run-aichat:
     runs-on: ubuntu-latest   # 🔥 đổi sang Linux runner
     env:
-      SCPDIR: /tmp/scoped_dir
+      SCPDIR: ${{ github.workspace }}/scoped_dir
       COOKIESFILE: ${{ github.workspace }}/cookies.json
       FBINFOSFILE: ${{ github.workspace }}/facebook_infos.bin
       SELF_FBINFOFILE: ${{ github.workspace }}/self_facebook_info.bin
@@ -71,6 +71,7 @@ jobs:
 
       - name: Test selenium
         run: |
+          sudo chmod -R 777 "${{ github.workspace }}"
           python3 test_selenium.py
         env:
           PYTHONUNBUFFERED: "1"
