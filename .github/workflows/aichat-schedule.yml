@@ -72,6 +72,7 @@ jobs:
       - name: Test selenium
         run: |
           sudo chmod -R 777 "${{ github.workspace }}"
+          sudo chown -R $USER:$USER "${{ github.workspace }}"
           python3 test_selenium.py
         env:
           PYTHONUNBUFFERED: "1"
